@@ -5,3 +5,7 @@ mat-card {
 mat-form-field, textarea {
   width: 100%;
 }
+
+.btn-save-post {
+  margin-top: 1rem;
+}
