@@ -11,16 +11,18 @@ import { Subscription } from 'rxjs';
 })
 export class PostListComponent implements OnInit {
   posts: Post[] = [];
-  private  postsSub: Subscription;
+  private postsSub: Subscription;
 
   constructor(
     private postsService: PostsServiceService
   ) { }
 
   ngOnInit() {
-    this.postsSub = this.postsService.getPostUpdateListener().subscribe((post) => {
-      this.posts.push(post);
-    });
+    this.postsService.getPosts();
+    this.postsSub = this.postsService.getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+      });
   }
 
   // tslint:disable-next-line: use-lifecycle-interface
